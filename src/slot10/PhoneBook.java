@@ -78,5 +78,7 @@ public class PhoneBook extends Phone{
                 return o1.getName().compareTo(o2.getName());
             }
         });
+
+        Collections.sort(PhoneList,(o1,o2) -> o1.getName().compareTo(o2.getName()));
     }
 }
