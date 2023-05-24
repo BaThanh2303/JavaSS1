@@ -24,12 +24,6 @@ public class productController {
             String soLuong = fxSoluong.getText();
             String danhMuc = fxDanhMuc.getText();
             String moTa = fxMoTa.getText();
-            try {
-                double number = Double.parseDouble(gia);
-            }catch (NumberFormatException e){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Nhập Số!!!");
-            }
             if (editProduct != null){
                 editProduct.setTenSP(name);
                 editProduct.setGia(gia);
