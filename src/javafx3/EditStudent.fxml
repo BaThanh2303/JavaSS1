@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx3.EditController">
+   <children>
+      <Text layoutX="200.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Student">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Text>
+      <TextField fx:id="editName" layoutX="83.0" layoutY="74.0" prefHeight="49.0" prefWidth="422.0" promptText="Edit Name" />
+      <TextField fx:id="editPhone" layoutX="83.0" layoutY="194.0" prefHeight="49.0" prefWidth="422.0" promptText="Edit Phone" />
+      <Button layoutX="368.0" layoutY="255.0" mnemonicParsing="false" onAction="#editStudent" prefHeight="40.0" prefWidth="137.0" text="Submit" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToList" prefHeight="31.0" prefWidth="75.0" text="&lt;Back" />
+      <TextField fx:id="editEmail" layoutX="83.0" layoutY="138.0" prefHeight="49.0" prefWidth="422.0" promptText="Edit Phone" />
+   </children>
+</Pane>
