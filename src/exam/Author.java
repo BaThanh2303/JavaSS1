@@ -25,6 +25,6 @@ public class Author {
         this.lastName = lastName;
     }
     public String toString(){
-        return("Name Author: " + firstName +" "+ lastName );
+        return(firstName +" "+ lastName );
     }
 }

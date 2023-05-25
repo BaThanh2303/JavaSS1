@@ -2,10 +2,10 @@ package exam;
 
 public class Book {
     public String title;
-    public String author;
+    Author author;
     public double price;
 
-    public Book(String title, String author, double price) {
+    public Book(String title, Author author, double price) {
         this.title = title;
         this.author = author;
         this.price = price;
@@ -19,11 +19,11 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 
@@ -35,6 +35,6 @@ public class Book {
         this.price = price;
     }
     public String toString(){
-        return("Name: " + title +" -Author: "+ author +" -Price: "+ price);
+        return("Name: " + title +" \nAuthor: "+ author +" \nPrice: "+ price);
     }
 }
