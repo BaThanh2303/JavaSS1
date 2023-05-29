@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quanlylophoc.ThemLopController">
+   <children>
+      <Text layoutX="184.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thêm Lớp Học" wrappingWidth="232.6708984375">
+         <font>
+            <Font size="31.0" />
+         </font>
+      </Text>
+      <TextField fx:id="tenLop" layoutX="168.0" layoutY="78.0" prefHeight="31.0" prefWidth="233.0" promptText="Tên Lớp" />
+      <TextField fx:id="phongHoc" layoutX="168.0" layoutY="124.0" prefHeight="31.0" prefWidth="233.0" promptText="Phòng Học" />
+      <TextField fx:id="khoaHoc" layoutX="169.0" layoutY="169.0" prefHeight="31.0" prefWidth="233.0" promptText="Khóa" />
+      <Button onAction="#Submit" layoutX="169.0" layoutY="218.0" mnemonicParsing="false" text="Submit" />
+      <Button layoutX="26.0" layoutY="19.0" mnemonicParsing="false" onAction="#Back" text="&lt;Back" />
+   </children>
+</Pane>

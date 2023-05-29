@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane fx:controller="quanlylophoc.DanhSController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="160.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản Lý Lớp Học">
+         <font>
+            <Font size="35.0" />
+         </font>
+      </Text>
+      <ListView fx:id="viewDS" layoutX="60.0" layoutY="79.0" prefHeight="268.0" prefWidth="360.0" />
+      <Button onAction="#NewClass" layoutX="439.0" layoutY="79.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="New Class" />
+      <Button onAction="#EditClass" layoutX="439.0" layoutY="126.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Edit Class" />
+   </children>
+</Pane>
