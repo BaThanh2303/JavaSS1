@@ -29,19 +29,28 @@ public class editController implements Initializable {
 
     public void Submit(ActionEvent actionEvent) {
         try {
-            String lop = editLop.getText();
-            String phong = editPhong.getText();
-            String khoa = editKhoa.getText();
             if (DanhSController.editLophoc != null) {
-                DanhSController.editLophoc.setTenLop(lop);
-                DanhSController.editLophoc.setKhoaHoc(khoa);
-                DanhSController.editLophoc.setPhongHoc(phong);
-                olView.setItems(DanhSController.listLopHoc);
-                olView.refresh();
-                return;
+                String lop = editLop.getText();
+                String phong = editPhong.getText();
+                String khoa = editKhoa.getText();
+                if (DanhSController.editLophoc != null) {
+                    DanhSController.editLophoc.setTenLop(lop);
+                    DanhSController.editLophoc.setKhoaHoc(khoa);
+                    DanhSController.editLophoc.setPhongHoc(phong);
+                    olView.setItems(DanhSController.listLopHoc);
+                    olView.refresh();
+                    editLop.clear();
+                    editKhoa.clear();
+                    editPhong.clear();
+                    return;
+                }
+                LopHoc lp = new LopHoc(lop, phong, khoa);
+                DanhSController.listLopHoc.add(lp);
+                DanhSController.editLophoc = null;
             }
-            LopHoc lp = new LopHoc(lop,phong,khoa);
-            DanhSController.listLopHoc.add(lp);
+            editLop.clear();
+            editKhoa.clear();
+            editPhong.clear();
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());
@@ -66,6 +75,7 @@ public class editController implements Initializable {
             editLop.setText(DanhSController.editLophoc.tenLop);
             editPhong.setText(DanhSController.editLophoc.phongHoc);
             editKhoa.setText(DanhSController.editLophoc.khoaHoc);
+
         }
     }
 }
