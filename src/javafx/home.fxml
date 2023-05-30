@@ -18,6 +18,7 @@
             <Font size="15.0" />
          </font>
       </Button>
-      <Button onAction="#edit" layoutX="35.0" layoutY="302.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="117.0" text="Edit" />
+      <Button layoutX="35.0" layoutY="302.0" mnemonicParsing="false" onAction="#edit" prefHeight="42.0" prefWidth="117.0" text="Edit" />
+      <Button onAction="#Class" layoutX="179.0" layoutY="302.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" text="Class" />
    </children>
 </Pane>
