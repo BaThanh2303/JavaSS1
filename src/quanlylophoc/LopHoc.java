@@ -1,14 +1,28 @@
 package quanlylophoc;
 
 public class LopHoc {
+    public Integer id;
     public String tenLop;
     public String phongHoc;
-    public String khoaHoc;
 
-    public LopHoc(String tenLop, String phongHoc, String khoaHoc) {
+    public LopHoc(Integer id, String tenLop, String phongHoc) {
+        this.id = id;
         this.tenLop = tenLop;
         this.phongHoc = phongHoc;
-        this.khoaHoc = khoaHoc;
+    }
+
+    public LopHoc(String tenLop, String phongHoc) {
+        this.tenLop = tenLop;
+        this.phongHoc = phongHoc;
+
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getTenLop() {
@@ -27,14 +41,7 @@ public class LopHoc {
         this.phongHoc = phongHoc;
     }
 
-    public String getKhoaHoc() {
-        return khoaHoc;
-    }
-
-    public void setKhoaHoc(String khoaHoc) {
-        this.khoaHoc = khoaHoc;
-    }
     public String toString(){
-        return ("Lớp: " + tenLop + "  Phòng: " + phongHoc + "     Khóa: " + khoaHoc);
+        return ("Lớp: " + tenLop + "  Phòng: " + phongHoc );
     }
 }

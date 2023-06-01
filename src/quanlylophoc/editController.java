@@ -35,17 +35,9 @@ public class editController implements Initializable {
                 String khoa = editKhoa.getText();
                 if (DanhSController.editLophoc != null) {
                     DanhSController.editLophoc.setTenLop(lop);
-                    DanhSController.editLophoc.setKhoaHoc(khoa);
                     DanhSController.editLophoc.setPhongHoc(phong);
-                    olView.setItems(DanhSController.listLopHoc);
-                    olView.refresh();
-                    editLop.clear();
-                    editKhoa.clear();
-                    editPhong.clear();
                     return;
                 }
-                LopHoc lp = new LopHoc(lop, phong, khoa);
-                DanhSController.listLopHoc.add(lp);
                 DanhSController.editLophoc = null;
             }
             editLop.clear();
@@ -60,7 +52,7 @@ public class editController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        olView.setItems(DanhSController.listLopHoc);
+
     }
 
     public void Back(ActionEvent actionEvent) throws Exception {
@@ -74,7 +66,7 @@ public class editController implements Initializable {
         if (DanhSController.editLophoc != null){
             editLop.setText(DanhSController.editLophoc.tenLop);
             editPhong.setText(DanhSController.editLophoc.phongHoc);
-            editKhoa.setText(DanhSController.editLophoc.khoaHoc);
+
 
         }
     }

@@ -5,16 +5,21 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
-<Pane fx:controller="quanlylophoc.DanhSController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="quanlylophoc.DanhSController">
    <children>
-      <Text layoutX="160.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản Lý Lớp Học">
+      <Text layoutX="75.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản Lý Lớp Học">
          <font>
             <Font size="35.0" />
          </font>
       </Text>
-      <ListView fx:id="viewDS" layoutX="60.0" layoutY="79.0" prefHeight="268.0" prefWidth="360.0" />
-      <Button onAction="#NewClass" layoutX="439.0" layoutY="79.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="New Class" />
-      <Button onAction="#EditClass" layoutX="439.0" layoutY="126.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="120.0" text="Edit Class" />
+      <Button layoutX="439.0" layoutY="22.0" mnemonicParsing="false" onAction="#NewClass" prefHeight="32.0" prefWidth="120.0" text="New Class" />
+      <TableView fx:id="tbV" layoutX="22.0" layoutY="83.0" prefHeight="296.0" prefWidth="554.0">
+        <columns>
+          <TableColumn fx:id="tcId" prefWidth="61.0" text="ID" />
+          <TableColumn fx:id="tcName" prefWidth="194.0" text="Tên" />
+            <TableColumn fx:id="tcPhong" prefWidth="184.0" text="Phòng" />
+            <TableColumn fx:id="Action" prefWidth="114.0" text="Action" />
+        </columns>
+      </TableView>
    </children>
 </Pane>

@@ -28,7 +28,7 @@ public class editController implements Initializable {
             HomeController.editStudent.setName(name);
             HomeController.editStudent.setTel(tel);
             Student sv = new Student(name,email,tel);
-            HomeController.listStudents.add(sv);
+
             HomeController.editStudent = null;
             edBack(null);
         }catch (Exception e){

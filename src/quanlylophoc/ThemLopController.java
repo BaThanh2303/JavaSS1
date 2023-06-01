@@ -1,5 +1,6 @@
 package quanlylophoc;
 
+import database.Connector;
 import javafx.HomeController;
 import javafx.Student;
 import javafx.event.ActionEvent;
@@ -8,6 +9,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 public class ThemLopController {
     public TextField tenLop;
@@ -23,15 +27,14 @@ public class ThemLopController {
         try {
             String tenlop = tenLop.getText();
             String phonghoc = phongHoc.getText();
-            String khoahoc = khoaHoc.getText();
-            for (LopHoc s : DanhSController.listLopHoc){
-                if(s.getTenLop().equals(tenlop))
-                    throw new Exception("Tên Lớp đã tồn tại");
-                if(s.getPhongHoc().equals(phonghoc))
-                    throw new Exception("Phòng đã hết");
-            }
-            LopHoc lp = new LopHoc(tenlop,phonghoc,khoahoc);
-            DanhSController.listLopHoc.add(lp);
+            LopHoc lp = new LopHoc(tenlop,phonghoc);
+            Connection conn = new Connector().getConn();
+            String sql = "insert into classrooms(name,room) values(?,?)";
+            PreparedStatement stt = conn.prepareStatement(sql);
+            stt.setString(1,lp.getTenLop());
+            stt.setString(2, lp.getPhongHoc());
+            stt.executeUpdate();
+
             Back(null);
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);

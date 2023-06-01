@@ -1,5 +1,6 @@
 package javafx;
 
+import database.Connector;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,9 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -24,12 +24,13 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
 
-    public static ObservableList<Student> listStudents = FXCollections.observableArrayList();
-    public ListView<Student> lv;
     public static Student editStudent;
-    private  final static String connectionString = "jdbc:mysql://localhost:3306/demo";
-    private final static String user = "root";
-    private final static String pwd = "";
+    public TableView<Student> tbV;
+    public TableColumn<Student,Integer> tcId;
+    public TableColumn<Student, String> tcName;
+    public TableColumn<Student, String> tcEmail;
+    public TableColumn<Student, String> tcTel;
+    public TableColumn<Student, Button> tcAction;
 
     public void goToForm(ActionEvent actionEvent) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("form.fxml"));
@@ -38,31 +39,36 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        tcId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        tcName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        tcEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        tcTel.setCellValueFactory(new PropertyValueFactory<>("tel"));
+        tcAction.setCellValueFactory(new PropertyValueFactory<>("edit"));
+
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(connectionString,user,pwd);
-            ObservableList<Student> list = FXCollections.observableArrayList();
+            Connection conn = new Connector().getConn();
+
             //query
             Statement stt = conn.createStatement();
             String sql = "select * from student";
             ResultSet rs = stt.executeQuery(sql);
+            ObservableList<Student> list = FXCollections.observableArrayList();
             while (rs.next()){
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String email = rs.getString("email");
                 String tel = rs.getString("tel");
-                Student s = new Student(name, email, tel);
+                Student s = new Student(id,name, email, tel);
                 list.add(s);
             }
-            lv.setItems(list);
-            lv.refresh();
+            tbV.setItems(list);
         }catch (Exception e ){
             System.out.println("error:"+e.getMessage());
         }
     }
 
     public void edit(ActionEvent actionEvent) throws Exception {
-        editStudent = lv.getSelectionModel().getSelectedItem();
+
         if(editStudent != null){
             Parent root = FXMLLoader.load(getClass().getResource("edit.fxml"));
             Main.mainStage.setScene(new Scene(root,600,400));

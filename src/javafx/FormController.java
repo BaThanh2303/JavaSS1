@@ -1,5 +1,8 @@
 package javafx;
 
+import database.Connector;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,10 +10,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+
 public class FormController {
     public TextField txtName;
     public TextField txtEmail;
     public TextField txtTel;
+
 
     public void backToList(ActionEvent actionEvent) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("home.fxml"));
@@ -22,14 +31,21 @@ public class FormController {
             String name = txtName.getText();
             String email = txtEmail.getText();
             String tel = txtTel.getText();
-            for (Student s: HomeController.listStudents){
-                if(s.getName().equals(name))
-                    throw new Exception("Tên SV đã tồn tại");
-                if(s.getEmail().equals(email))
-                    throw new Exception("Email đã tồn tại");
-            }
+
             Student sv = new Student(name,email,tel);
-            HomeController.listStudents.add(sv);
+//            HomeController.listStudents.add(sv);
+            Connection conn = new Connector().getConn();
+
+            //query
+//            Statement stt = conn.createStatement();
+//            String sql = "insert into student(name,email,tel) values('"+ sv.getName()+"','"+sv.getEmail()+ "','"+ sv.getTel()+"')";
+//            stt.executeUpdate(sql);
+            String sql = "insert into student(name,email,tel) values(?,?,?)";
+            PreparedStatement stt = conn.prepareStatement(sql);
+            stt.setString(1,sv.getName());
+            stt.setString(2,sv.getEmail());
+            stt.setString(3,sv.getTel());
+            stt.executeUpdate();
             backToList(null);
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);

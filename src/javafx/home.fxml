@@ -5,20 +5,26 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.HomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="455.0" prefWidth="733.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.HomeController">
    <children>
       <Text layoutX="179.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student List">
          <font>
             <Font size="47.0" />
          </font>
       </Text>
-      <ListView fx:id="lv" layoutX="35.0" layoutY="110.0" prefHeight="173.0" prefWidth="534.0" />
       <Button layoutX="455.0" layoutY="34.0" mnemonicParsing="false" onAction="#goToForm" style="-fx-background-color: red;" text="Create student" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
-      <Button layoutX="35.0" layoutY="302.0" mnemonicParsing="false" onAction="#edit" prefHeight="42.0" prefWidth="117.0" text="Edit" />
-      <Button onAction="#Class" layoutX="179.0" layoutY="302.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="102.0" text="Class" />
+      <TableView fx:id="tbV" layoutX="16.0" layoutY="99.0" prefHeight="331.0" prefWidth="697.0">
+        <columns>
+          <TableColumn fx:id="tcId" prefWidth="75.0" text="ID" />
+          <TableColumn fx:id="tcName" prefWidth="130.0" text="Name" />
+            <TableColumn fx:id="tcEmail" prefWidth="163.0" text="Email" />
+            <TableColumn fx:id="tcTel" prefWidth="187.0" text="Telephone" />
+            <TableColumn fx:id="tcAction" prefWidth="139.0" text="Action" />
+        </columns>
+      </TableView>
    </children>
 </Pane>
