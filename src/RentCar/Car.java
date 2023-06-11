@@ -1,77 +1,69 @@
 package RentCar;
 
-import java.sql.Struct;
+import java.sql.Date;
 
 public class Car {
-    private int id;
-    private String tenXe;
-    private String bienSoXe;
-    private String dangKiem;
-    private String baoDuong;
-    private int giaXe;
+    private int Carid;
+    private String Brand;
+    private String Model;
+    private double Price;
+    private String Status;
+    private Date Date;
 
-    public Car(int id, String tenXe, String bienSoXe, String dangKiem, String baoDuong, int giaXe) {
-        this.id = id;
-        this.tenXe = tenXe;
-        this.bienSoXe = bienSoXe;
-        this.dangKiem = dangKiem;
-        this.baoDuong = baoDuong;
-        this.giaXe = giaXe;
+    public Car(int carid, String brand, String model, double price, String status, java.sql.Date date) {
+        Carid = carid;
+        Brand = brand;
+        Model = model;
+        Price = price;
+        Status = status;
+        Date = date;
     }
 
-    public Car(String tenXe, String bienSoXe, String dangKiem, String baoDuong, int giaXe) {
-        this.tenXe = tenXe;
-        this.bienSoXe = bienSoXe;
-        this.dangKiem = dangKiem;
-        this.baoDuong = baoDuong;
-        this.giaXe = giaXe;
+    public int getCarid() {
+        return Carid;
     }
 
-    public int getId() {
-        return id;
+    public void setCarid(int carid) {
+        Carid = carid;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getBrand() {
+        return Brand;
     }
 
-    public String getTenXe() {
-        return tenXe;
+    public void setBrand(String brand) {
+        Brand = brand;
     }
 
-    public void setTenXe(String tenXe) {
-        this.tenXe = tenXe;
+    public String getModel() {
+        return Model;
     }
 
-    public String getBienSoXe() {
-        return bienSoXe;
+    public void setModel(String model) {
+        Model = model;
     }
 
-    public void setBienSoXe(String bienSoXe) {
-        this.bienSoXe = bienSoXe;
+    public double getPrice() {
+        return Price;
     }
 
-    public String getDangKiem() {
-        return dangKiem;
+    public void setPrice(double price) {
+        Price = price;
     }
 
-    public void setDangKiem(String dangKiem) {
-        this.dangKiem = dangKiem;
+    public String getStatus() {
+        return Status;
     }
 
-    public String getBaoDuong() {
-        return baoDuong;
+    public void setStatus(String status) {
+        Status = status;
     }
 
-    public void setBaoDuong(String baoDuong) {
-        this.baoDuong = baoDuong;
+    public java.sql.Date getDate() {
+        return Date;
     }
 
-    public int getGiaXe() {
-        return giaXe;
-    }
-
-    public void setGiaXe(int giaXe) {
-        this.giaXe = giaXe;
+    public void setDate(java.sql.Date date) {
+        Date = date;
     }
 }

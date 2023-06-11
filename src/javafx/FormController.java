@@ -1,6 +1,8 @@
 package javafx;
 
 import database.Connector;
+import enums.RepositoryType;
+import factory.RepositoryFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -33,20 +35,12 @@ public class FormController {
             String tel = txtTel.getText();
 
             Student sv = new Student(name,email,tel);
-//            HomeController.listStudents.add(sv);
-            Connection conn = new Connector().getConn();
+            if (RepositoryFactory.createRepositoryInstance(RepositoryType.STUDENT).create(sv)){
+                backToList(null);
+            }else {
+                throw new Exception("Không thể tạo mới sinh viên");
+            }
 
-            //query
-//            Statement stt = conn.createStatement();
-//            String sql = "insert into student(name,email,tel) values('"+ sv.getName()+"','"+sv.getEmail()+ "','"+ sv.getTel()+"')";
-//            stt.executeUpdate(sql);
-            String sql = "insert into student(name,email,tel) values(?,?,?)";
-            PreparedStatement stt = conn.prepareStatement(sql);
-            stt.setString(1,sv.getName());
-            stt.setString(2,sv.getEmail());
-            stt.setString(3,sv.getTel());
-            stt.executeUpdate();
-            backToList(null);
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText(e.getMessage());

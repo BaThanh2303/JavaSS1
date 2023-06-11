@@ -1,6 +1,8 @@
 package javafx;
 
 import database.Connector;
+import enums.RepositoryType;
+import factory.RepositoryFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -46,21 +48,8 @@ public class HomeController implements Initializable {
         tcAction.setCellValueFactory(new PropertyValueFactory<>("edit"));
 
         try {
-            Connection conn = new Connector().getConn();
-
-            //query
-            Statement stt = conn.createStatement();
-            String sql = "select * from student";
-            ResultSet rs = stt.executeQuery(sql);
             ObservableList<Student> list = FXCollections.observableArrayList();
-            while (rs.next()){
-                int id = rs.getInt("id");
-                String name = rs.getString("name");
-                String email = rs.getString("email");
-                String tel = rs.getString("tel");
-                Student s = new Student(id,name, email, tel);
-                list.add(s);
-            }
+            list.addAll(RepositoryFactory.createRepositoryInstance(RepositoryType.STUDENT).getAll());
             tbV.setItems(list);
         }catch (Exception e ){
             System.out.println("error:"+e.getMessage());

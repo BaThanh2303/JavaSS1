@@ -1,17 +1,16 @@
-package database;
-
+package RentCar;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class Connector {
-    private  final static String connectionString = "jdbc:mysql://localhost:3306/demo";
+    private  final static String connectionString = "jdbc:mysql://localhost:3306/rentcar";
     private final static String user = "root";
     private final static String pwd = "";
     private static Connector instance;
-    private Connection conn;
+    private Connection connect;
     public Connector() throws Exception{
         Class.forName("com.mysql.jdbc.Driver");
-        this.conn = DriverManager.getConnection(connectionString,user,pwd);
+        this.connect = DriverManager.getConnection(connectionString,user,pwd);
     }
     public static Connector getInstance() throws Exception{
         if(instance == null){
@@ -20,6 +19,6 @@ public class Connector {
         return instance;
     }
     public Connection getConn() {
-        return conn;
+        return connect;
     }
 }
