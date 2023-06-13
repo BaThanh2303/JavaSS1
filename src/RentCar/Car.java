@@ -66,4 +66,7 @@ public class Car {
     public void setDate(java.sql.Date date) {
         Date = date;
     }
+    public String toString(){
+        return Carid+"-"+Brand+"-"+Model+"-"+Price+"-"+Status;
+    }
 }
